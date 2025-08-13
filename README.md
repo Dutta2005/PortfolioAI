@@ -44,7 +44,7 @@ A modern, full-stack web application that automatically generates professional p
 
 - **Frontend**: Next.js 15, React, TypeScript, Tailwind CSS
 - **Backend**: Next.js API Routes, Prisma ORM
-- **Database**: PostgreSQL (or SQLite for development)
+- **Database**: Supabase
 - **Authentication**: NextAuth.js with Google OAuth
 - **AI**: OpenAI GPT-4 for resume parsing
 - **PDF Processing**: pdf2json for PDF parsing
@@ -54,7 +54,7 @@ A modern, full-stack web application that automatically generates professional p
 ## Prerequisites
 
 - Node.js 18+ and npm
-- PostgreSQL database (or SQLite for development)
+- Supabase account
 - OpenAI API key
 - Google OAuth credentials (optional, for Google sign-in)
 
@@ -62,7 +62,7 @@ A modern, full-stack web application that automatically generates professional p
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/Dutta2005/PortfolioAI.git
    cd portfolio-generator
    ```
 
@@ -76,9 +76,8 @@ A modern, full-stack web application that automatically generates professional p
    Create a `.env` file in the root directory:
    ```env
    # Database
-   DATABASE_URL="postgresql://username:password@localhost:5432/portfolio_db"
-   # For development with SQLite:
-   # DATABASE_URL="file:./dev.db"
+   DATABASE_URL="your-supabase-connection-string"
+   DIRECT_URL="your-supabase-direct-connection-string"
 
    # NextAuth
    NEXTAUTH_URL="http://localhost:3000"
@@ -113,8 +112,8 @@ A modern, full-stack web application that automatically generates professional p
 
 #### PostgreSQL (Recommended for production)
 1. Install PostgreSQL
-2. Create a database: `createdb portfolio_db`
-3. Update `DATABASE_URL` in `.env`
+2. Create a datbase in Supabase
+3. Add the connection string to your `.env` file as `DATABASE_URL` and `DIRECT_URL`
 
 #### SQLite (Development only)
 1. Use: `DATABASE_URL="file:./dev.db"`
