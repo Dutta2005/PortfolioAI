@@ -211,6 +211,16 @@ rm -rf .next
 npm run build
 ```
 
+#### 6. Vercel Deployment: Zod Version Conflict
+**Error**: `ERESOLVE could not resolve` with Zod versions
+
+**Cause**: OpenAI package requires Zod v3.x but project uses v4.x
+
+**Solutions**:
+- The project includes `.npmrc` with `legacy-peer-deps=true`
+- Zod version is set to `^3.23.8` for compatibility
+- If still failing, add `--legacy-peer-deps` to build command in Vercel
+
 ### Environment-Specific Issues
 
 #### Windows
@@ -263,8 +273,22 @@ portfolio-generator/
 ### Vercel (Recommended)
 1. Push code to GitHub
 2. Connect repository to Vercel
-3. Add environment variables in Vercel dashboard
-4. Deploy automatically
+3. Add environment variables in Vercel dashboard:
+   ```
+   DATABASE_URL=your-postgres-url
+   NEXTAUTH_URL=https://your-app.vercel.app
+   NEXTAUTH_SECRET=your-secret-key
+   OPENAI_API_KEY=your-openai-key
+   GOOGLE_CLIENT_ID=your-google-client-id (optional)
+   GOOGLE_CLIENT_SECRET=your-google-client-secret (optional)
+   ```
+4. The project includes `vercel.json` with build configuration
+5. Deploy automatically
+
+**Note**: If you encounter dependency resolution errors, the project includes:
+- `.npmrc` with `legacy-peer-deps=true`
+- `vercel.json` with custom build command
+- Compatible dependency versions
 
 ### Other Platforms
 - **Netlify**: Use `npm run build` and deploy `out/` folder
