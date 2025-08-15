@@ -221,6 +221,17 @@ npm run build
 - Zod version is set to `^3.23.8` for compatibility
 - If still failing, add `--legacy-peer-deps` to build command in Vercel
 
+#### 7. Vercel Deployment: Prisma Client Error
+**Error**: `Prisma has detected that this project was built on Vercel, which caches dependencies`
+
+**Cause**: Prisma Client not generated during build process
+
+**Solutions**:
+- The project includes `postinstall` script with `prisma generate`
+- Build script includes `prisma generate && next build`
+- `vercel.json` configured with proper install command
+- Prisma is in devDependencies for build-time generation
+
 ### Environment-Specific Issues
 
 #### Windows
@@ -271,24 +282,29 @@ portfolio-generator/
 ## Deployment
 
 ### Vercel (Recommended)
-1. Push code to GitHub
-2. Connect repository to Vercel
-3. Add environment variables in Vercel dashboard:
+1. **Set up Database**: Create a PostgreSQL database (Vercel Postgres, Supabase, or PlanetScale)
+2. **Push code to GitHub**
+3. **Connect repository to Vercel**
+4. **Add environment variables** in Vercel dashboard:
    ```
    DATABASE_URL=your-postgres-url
    NEXTAUTH_URL=https://your-app.vercel.app
-   NEXTAUTH_SECRET=your-secret-key
+   NEXTAUTH_SECRET=your-secret-key-here
    OPENAI_API_KEY=your-openai-key
    GOOGLE_CLIENT_ID=your-google-client-id (optional)
    GOOGLE_CLIENT_SECRET=your-google-client-secret (optional)
    ```
-4. The project includes `vercel.json` with build configuration
-5. Deploy automatically
+5. **Deploy automatically** - Vercel will use the custom build configuration
 
-**Note**: If you encounter dependency resolution errors, the project includes:
-- `.npmrc` with `legacy-peer-deps=true`
-- `vercel.json` with custom build command
-- Compatible dependency versions
+**Database Setup Options**:
+- **Vercel Postgres**: Add from Vercel dashboard → Storage → Create Database
+- **Supabase**: Create project → Settings → Database → Connection string
+- **PlanetScale**: Create database → Connect → Get connection string
+
+**Build Configuration**:
+- Project includes `vercel.json` with custom build and install commands
+- Prisma Client is generated automatically during build
+- Dependencies resolved with `--legacy-peer-deps` flag
 
 ### Other Platforms
 - **Netlify**: Use `npm run build` and deploy `out/` folder
