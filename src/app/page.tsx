@@ -55,9 +55,11 @@ export default function Home() {
                 Create Your Portfolio
               </Button>
             </Link>
+            <Link href="/auth/signin">
             <Button size="lg" className="text-lg px-8 py-3 bg-gray-100 hover:bg-gray-50 border-slate-200 shadow-md">
               Sign in
             </Button>
+            </Link>
           </div>
         </div>
       </section>
