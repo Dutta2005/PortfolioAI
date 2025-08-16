@@ -130,15 +130,15 @@ export default function PortfolioEditor({
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Edit Your Portfolio</h2>
         <div className="flex gap-2">
-          <Button variant="outline" onClick={onPreviewAction}>
+          <Button className="bg-white shadow-md hover:bg-gray-50" onClick={onPreviewAction}>
             <Eye className="mr-2 h-4 w-4" />
             Preview
           </Button>
-          <Button variant="outline" onClick={onDownloadAction}>
+          <Button className="bg-white shadow-md hover:bg-gray-50" onClick={onDownloadAction}>
             <Download className="mr-2 h-4 w-4" />
             Download Code
           </Button>
-          <Button onClick={handleSave} disabled={isSaving}>
+          <Button onClick={handleSave} disabled={isSaving} className="bg-gray-900 shadow-md hover:bg-gray-800 text-white">
             <Save className="mr-2 h-4 w-4" />
             {isSaving ? "Saving..." : "Save"}
           </Button>
@@ -147,15 +147,15 @@ export default function PortfolioEditor({
 
       <Tabs defaultValue="personal" className="w-full">
         <TabsList className="grid w-full grid-cols-5">
-          <TabsTrigger value="personal">Personal</TabsTrigger>
-          <TabsTrigger value="experience">Experience</TabsTrigger>
-          <TabsTrigger value="education">Education</TabsTrigger>
-          <TabsTrigger value="skills">Skills</TabsTrigger>
-          <TabsTrigger value="projects">Projects</TabsTrigger>
+          <TabsTrigger value="personal" className="border-none data-[state=active]:bg-white data-[state=active]:text-black shadow-md">Personal</TabsTrigger>
+          <TabsTrigger value="experience" className="border-none data-[state=active]:bg-white data-[state=active]:text-black shadow-md">Experience</TabsTrigger>
+          <TabsTrigger value="education" className="border-none data-[state=active]:bg-white data-[state=active]:text-black shadow-md">Education</TabsTrigger>
+          <TabsTrigger value="skills" className="border-none data-[state=active]:bg-white data-[state=active]:text-black shadow-md">Skills</TabsTrigger>
+          <TabsTrigger value="projects" className="border-none data-[state=active]:bg-white data-[state=active]:text-black shadow-md">Projects</TabsTrigger>
         </TabsList>
 
         <TabsContent value="personal" className="space-y-4">
-          <Card>
+          <Card className="border-none shadow-md bg-white">
             <CardHeader>
               <CardTitle>Personal Information</CardTitle>
             </CardHeader>
@@ -175,6 +175,7 @@ export default function PortfolioEditor({
                         },
                       }))
                     }
+                    className="border-none shadow-md"
                   />
                 </div>
                 <div className="space-y-2">
@@ -192,6 +193,7 @@ export default function PortfolioEditor({
                         },
                       }))
                     }
+                    className="border-none shadow-md"
                   />
                 </div>
                 <div className="space-y-2">
@@ -208,6 +210,7 @@ export default function PortfolioEditor({
                         },
                       }))
                     }
+                    className="border-none shadow-md"
                   />
                 </div>
                 <div className="space-y-2">
@@ -224,6 +227,7 @@ export default function PortfolioEditor({
                         },
                       }))
                     }
+                    className="border-none shadow-md"
                   />
                 </div>
                 <div className="space-y-2">
@@ -240,6 +244,7 @@ export default function PortfolioEditor({
                         },
                       }))
                     }
+                    className="border-none shadow-md"
                   />
                 </div>
                 <div className="space-y-2">
@@ -256,6 +261,7 @@ export default function PortfolioEditor({
                         },
                       }))
                     }
+                    className="border-none shadow-md"
                   />
                 </div>
               </div>
@@ -268,6 +274,7 @@ export default function PortfolioEditor({
                   onChange={(e) =>
                     setData((prev) => ({ ...prev, summary: e.target.value }))
                   }
+                  className="border-none shadow-md"
                 />
               </div>
             </CardContent>
@@ -275,11 +282,11 @@ export default function PortfolioEditor({
         </TabsContent>
 
         <TabsContent value="experience" className="space-y-4">
-          <Card>
+          <Card className="border-none bg-white shadow-md">
             <CardHeader>
               <CardTitle className="flex justify-between items-center">
                 Work Experience
-                <Button onClick={addExperience} size="sm">
+                <Button onClick={addExperience} size="sm" className="bg-gray-900 text-white hover:bg-gray-800">
                   <Plus className="mr-2 h-4 w-4" />
                   Add Experience
                 </Button>
@@ -287,13 +294,13 @@ export default function PortfolioEditor({
             </CardHeader>
             <CardContent className="space-y-6">
               {data.experience.map((exp, index) => (
-                <div key={index} className="border rounded-lg p-4 space-y-4">
+                <div key={index} className="border border-gray-300 rounded-lg p-4 space-y-4">
                   <div className="flex justify-between items-start">
                     <h4 className="font-medium">Experience {index + 1}</h4>
                     <Button
-                      variant="outline"
                       size="sm"
                       onClick={() => removeExperience(index)}
+                      className="bg-gray-100 text-black hover:bg-gray-200"
                     >
                       <Minus className="h-4 w-4" />
                     </Button>
@@ -308,6 +315,7 @@ export default function PortfolioEditor({
                           newExp[index].company = e.target.value;
                           setData((prev) => ({ ...prev, experience: newExp }));
                         }}
+                        className="border-none shadow-md"
                       />
                     </div>
                     <div className="space-y-2">
@@ -319,6 +327,7 @@ export default function PortfolioEditor({
                           newExp[index].position = e.target.value;
                           setData((prev) => ({ ...prev, experience: newExp }));
                         }}
+                        className="border-none shadow-md"
                       />
                     </div>
                   </div>
@@ -331,6 +340,7 @@ export default function PortfolioEditor({
                         newExp[index].duration = e.target.value;
                         setData((prev) => ({ ...prev, experience: newExp }));
                       }}
+                      className="border-none shadow-md"
                     />
                   </div>
                   <div className="space-y-2">
@@ -343,6 +353,7 @@ export default function PortfolioEditor({
                         newExp[index].description = e.target.value;
                         setData((prev) => ({ ...prev, experience: newExp }));
                       }}
+                      className="border-none shadow-md"
                     />
                   </div>
                 </div>
@@ -352,11 +363,11 @@ export default function PortfolioEditor({
         </TabsContent>
 
         <TabsContent value="projects" className="space-y-4">
-          <Card>
+          <Card className="border-none shadow-md">
             <CardHeader>
               <CardTitle className="flex justify-between items-center">
                 Projects
-                <Button onClick={addProject} size="sm">
+                <Button onClick={addProject} size="sm" className="bg-gray-900 hover:bg-gray-800 text-white">
                   <Plus className="mr-2 h-4 w-4" />
                   Add Project
                 </Button>
@@ -364,13 +375,13 @@ export default function PortfolioEditor({
             </CardHeader>
             <CardContent className="space-y-6">
               {data.projects.map((project, index) => (
-                <div key={index} className="border rounded-lg p-4 space-y-4">
+                <div key={index} className="border border-gray-300 rounded-lg p-4 space-y-4">
                   <div className="flex justify-between items-start">
                     <h4 className="font-medium">Project {index + 1}</h4>
                     <Button
-                      variant="outline"
                       size="sm"
                       onClick={() => removeProject(index)}
+                      className="bg-gray-100 hover:bg-gray-200 text-black"
                     >
                       <Minus className="h-4 w-4" />
                     </Button>
@@ -384,6 +395,7 @@ export default function PortfolioEditor({
                         newProjects[index].name = e.target.value;
                         setData((prev) => ({ ...prev, projects: newProjects }));
                       }}
+                      className="border-none shadow-md"
                     />
                   </div>
                   <div className="space-y-2">
@@ -396,6 +408,7 @@ export default function PortfolioEditor({
                         newProjects[index].description = e.target.value;
                         setData((prev) => ({ ...prev, projects: newProjects }));
                       }}
+                      className="border-none shadow-md"
                     />
                   </div>
                   <div className="space-y-2">
@@ -409,6 +422,7 @@ export default function PortfolioEditor({
                           .map((t) => t.trim());
                         setData((prev) => ({ ...prev, projects: newProjects }));
                       }}
+                      className="border-none shadow-md"
                     />
                   </div>
                   <div className="space-y-2">
@@ -420,6 +434,7 @@ export default function PortfolioEditor({
                         newProjects[index].link = e.target.value;
                         setData((prev) => ({ ...prev, projects: newProjects }));
                       }}
+                      className="border-none shadow-md"
                     />
                   </div>
                 </div>
@@ -429,11 +444,11 @@ export default function PortfolioEditor({
         </TabsContent>
 
         <TabsContent value="education" className="space-y-4">
-          <Card>
+          <Card className="border-none shadow-md">
             <CardHeader>
               <CardTitle className="flex justify-between items-center">
                 Education
-                <Button onClick={addEducation} size="sm">
+                <Button onClick={addEducation} size="sm" className="bg-gray-900 hover:bg-gray-800 text-white">
                   <Plus className="mr-2 h-4 w-4" />
                   Add Education
                 </Button>
@@ -441,13 +456,13 @@ export default function PortfolioEditor({
             </CardHeader>
             <CardContent className="space-y-6">
               {data.education.map((edu, index) => (
-                <div key={index} className="border rounded-lg p-4 space-y-4">
+                <div key={index} className="border border-gray-300 rounded-lg p-4 space-y-4">
                   <div className="flex justify-between items-start">
                     <h4 className="font-medium">Education {index + 1}</h4>
                     <Button
-                      variant="outline"
                       size="sm"
                       onClick={() => removeEducation(index)}
+                      className="bg-gray-100 hover:bg-gray-200 text-black"
                     >
                       <Minus className="h-4 w-4" />
                     </Button>
@@ -462,6 +477,7 @@ export default function PortfolioEditor({
                           newEdu[index].institution = e.target.value;
                           setData((prev) => ({ ...prev, education: newEdu }));
                         }}
+                        className="border-none shadow-md"
                       />
                     </div>
                     <div className="space-y-2">
@@ -473,6 +489,7 @@ export default function PortfolioEditor({
                           newEdu[index].degree = e.target.value;
                           setData((prev) => ({ ...prev, education: newEdu }));
                         }}
+                        className="border-none shadow-md"
                       />
                     </div>
                   </div>
@@ -486,6 +503,7 @@ export default function PortfolioEditor({
                           newEdu[index].field = e.target.value;
                           setData((prev) => ({ ...prev, education: newEdu }));
                         }}
+                        className="border-none shadow-md"
                       />
                     </div>
                     <div className="space-y-2">
@@ -497,6 +515,7 @@ export default function PortfolioEditor({
                           newEdu[index].year = e.target.value;
                           setData((prev) => ({ ...prev, education: newEdu }));
                         }}
+                        className="border-none shadow-md"
                       />
                     </div>
                   </div>
@@ -509,6 +528,7 @@ export default function PortfolioEditor({
                         newEdu[index].gpa = e.target.value;
                         setData((prev) => ({ ...prev, education: newEdu }));
                       }}
+                      className="border-none shadow-md"
                     />
                   </div>
                 </div>
@@ -518,7 +538,7 @@ export default function PortfolioEditor({
         </TabsContent>
 
         <TabsContent value="skills" className="space-y-4">
-          <Card>
+          <Card className="border-none shadow-md">
             <CardHeader>
               <CardTitle>Skills</CardTitle>
             </CardHeader>
@@ -543,6 +563,7 @@ export default function PortfolioEditor({
                       },
                     }))
                   }
+                  className="border-none shadow-md"
                   placeholder="JavaScript, React, Node.js, Python, etc."
                 />
               </div>
@@ -566,6 +587,7 @@ export default function PortfolioEditor({
                       },
                     }))
                   }
+                  className="border-none shadow-md"
                   placeholder="Leadership, Communication, Problem Solving, etc."
                 />
               </div>

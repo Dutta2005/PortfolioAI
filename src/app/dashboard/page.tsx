@@ -121,7 +121,7 @@ export default function Dashboard() {
         const { files } = await response.json();
 
         // Dynamically import JSZip to avoid SSR issues
-        const JSZip = (await import('jszip')).default;
+        const JSZip = (await import("jszip")).default;
         const zip = new JSZip();
 
         // Add each file to the zip
@@ -130,8 +130,8 @@ export default function Dashboard() {
         });
 
         // Generate the zip file
-        const zipBlob = await zip.generateAsync({ type: 'blob' });
-        
+        const zipBlob = await zip.generateAsync({ type: "blob" });
+
         // Download the zip file
         const url = URL.createObjectURL(zipBlob);
         const a = document.createElement("a");
@@ -147,7 +147,7 @@ export default function Dashboard() {
         toast.success(`Downloaded portfolio with ${files.length} files!`);
       }
     } catch (error) {
-      console.error('Download error:', error);
+      console.error("Download error:", error);
       toast.error("Failed to download code files");
     }
   };
@@ -231,9 +231,8 @@ export default function Dashboard() {
               </p>
             </div>
             <Button
-              variant="outline"
               onClick={handleLogout}
-              className="flex items-center gap-2 hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors"
+              className="flex items-center gap-2 hover:bg-red-50 hover:text-red-600 hover:border-red-200 transition-colors bg-white border-slate-200 shadow-lg hover:shadow-xl"
             >
               <LogOut className="h-4 w-4" />
               Logout
@@ -246,9 +245,23 @@ export default function Dashboard() {
           onValueChange={(value) => setActiveTab(value as any)}
         >
           <TabsList className="grid w-full grid-cols-3 max-w-md">
-            <TabsTrigger value="list">My Portfolios</TabsTrigger>
-            <TabsTrigger value="upload">Upload Resume</TabsTrigger>
-            <TabsTrigger value="edit" disabled={!currentPortfolio}>
+            <TabsTrigger
+              value="list"
+              className="border-none data-[state=active]:bg-white data-[state=active]:text-black shadow-md"
+            >
+              My Portfolios
+            </TabsTrigger>
+            <TabsTrigger
+              value="upload"
+              className="border-none data-[state=active]:bg-white data-[state=active]:text-black shadow-md"
+            >
+              Upload Resume
+            </TabsTrigger>
+            <TabsTrigger
+              value="edit"
+              disabled={!currentPortfolio}
+              className="border-none data-[state=active]:bg-white data-[state=active]:text-black shadow-md"
+            >
               Edit Portfolio
             </TabsTrigger>
           </TabsList>
@@ -256,7 +269,7 @@ export default function Dashboard() {
           <TabsContent value="list" className="mt-6">
             <div className="grid gap-6">
               {portfolios.length === 0 ? (
-                <Card>
+                <Card className="border border-gray-300 bg-gray-100 shadow-md">
                   <CardContent className="flex flex-col items-center justify-center py-12">
                     <div className="text-center">
                       <h3 className="text-lg font-semibold mb-2">
@@ -265,7 +278,7 @@ export default function Dashboard() {
                       <p className="text-gray-600 mb-4">
                         Upload your resume to create your first portfolio
                       </p>
-                      <Button onClick={() => setActiveTab("upload")}>
+                      <Button onClick={() => setActiveTab("upload")} className="bg-gray-900 text-white hover:bg-gray-800">
                         <Plus className="mr-2 h-4 w-4" />
                         Create Portfolio
                       </Button>
@@ -277,7 +290,7 @@ export default function Dashboard() {
                   {portfolios.map((portfolio) => (
                     <Card
                       key={portfolio.id}
-                      className="hover:shadow-md transition-shadow"
+                      className="shadow-md hover:shadow-lg transition-shadow border-none bg-white"
                     >
                       <CardHeader>
                         <CardTitle className="text-lg">
@@ -295,7 +308,7 @@ export default function Dashboard() {
                           </span>
                           <div className="flex gap-2">
                             <Button
-                              variant="outline"
+                              className="bg-white shadow-md hover:shadow-lg hover:bg-gray-50"
                               size="sm"
                               onClick={() => {
                                 const previewUrl = `/preview/${portfolio.id}`;
@@ -310,7 +323,7 @@ export default function Dashboard() {
                               <Eye className="h-4 w-4" />
                             </Button>
                             <Button
-                              variant="outline"
+                              className="bg-white shadow-md hover:shadow-lg hover:bg-gray-50"
                               size="sm"
                               onClick={() => editPortfolio(portfolio)}
                               title="Edit Portfolio"
@@ -318,10 +331,9 @@ export default function Dashboard() {
                               <Edit className="h-4 w-4" />
                             </Button>
                             <Button
-                              variant="outline"
                               size="sm"
                               onClick={() => openDeleteDialog(portfolio)}
-                              className="hover:bg-red-50 hover:text-red-600 hover:border-red-200"
+                              className="hover:bg-red-50 hover:text-red-600 hover:border-red-200 bg-white shadow-md hover:shadow-lg"
                               title="Delete Portfolio"
                             >
                               <Trash2 className="h-4 w-4" />

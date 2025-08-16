@@ -46,18 +46,17 @@ export function AlertDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChangeAction}>
-      <DialogContent className="sm:max-w-[425px]">
+      <DialogContent className="sm:max-w-[425px] bg-white border-none">
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
           <DialogDescription>{description}</DialogDescription>
         </DialogHeader>
         <DialogFooter>
-          <Button variant="outline" onClick={handleCancel}>
+          <Button className='bg-white shadow-md hover:bg-gray-50 border-inherit' onClick={handleCancel}>
             {cancelText}
           </Button>
           <Button
-            variant={variant === "destructive" ? "destructive" : "default"}
-            onClick={handleConfirm}
+            onClick={handleConfirm} className='bg-red-600 shadow-md hover:bg-red-500 border-inherit text-white'
           >
             {confirmText}
           </Button>

@@ -31,19 +31,18 @@ export default function SignIn() {
           </p>
         </div>
 
-        <Card>
+        <Card className='shadow-lg hover:shadow-xl transition-shadow bg-white border-none'>
           <CardHeader>
             <CardTitle>Welcome back</CardTitle>
-            <CardDescription>
+            <CardDescription className='text-gray-500'>
               Sign in to access your portfolio dashboard
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <Button
-              variant="outline"
-              className="w-full"
               onClick={handleGoogleSignIn}
               disabled={isLoading}
+              className='w-full bg-white text-black hover:bg-gray-100 transition-colors border-slate-500 border-double'
             >
               <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path

@@ -75,7 +75,7 @@ export default function ResumeUploader({
   });
 
   return (
-    <Card className="w-full max-w-2xl mx-auto">
+    <Card className="w-full max-w-2xl mx-auto border-none shadow-lg bg-white">
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <FileText className="h-5 w-5" />
@@ -131,7 +131,7 @@ export default function ResumeUploader({
               )?.click()
             }
             disabled={isUploading}
-            className="w-full"
+            className="w-full bg-gray-900 text-gray-50 hover:bg-gray-800"
           >
             {isUploading ? (
               <>

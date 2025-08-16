@@ -42,7 +42,7 @@ A modern, full-stack web application that automatically generates professional p
 
 ## Tech Stack
 
-- **Frontend**: Next.js 15, React, TypeScript, Tailwind CSS
+- **Frontend**: Next.js 15, React, TypeScript, Tailwind CSS v3
 - **Backend**: Next.js API Routes, Prisma ORM
 - **Database**: Supabase
 - **Authentication**: NextAuth.js with Google OAuth
@@ -235,6 +235,17 @@ npm run build
 - Build script includes `prisma generate && next build`
 - `vercel.json` configured with proper install command
 - Prisma is in devDependencies for build-time generation
+
+#### 8. Vercel Deployment: LightningCSS Error
+**Error**: `Cannot find module '../lightningcss.linux-x64-gnu.node'`
+
+**Cause**: Tailwind CSS v4 uses LightningCSS which has platform-specific native dependencies
+
+**Solutions**:
+- Project uses Tailwind CSS v3.4.17 (stable version)
+- Removed Tailwind v4 dependencies (`@tailwindcss/postcss`)
+- Uses standard PostCSS configuration
+- Compatible with all deployment platforms
 
 ### Environment-Specific Issues
 

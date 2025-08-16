@@ -1,7 +1,13 @@
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Upload, Edit, Download, Sparkles, Zap, Shield } from 'lucide-react'
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Upload, Edit, Download, Sparkles, Zap, Shield } from "lucide-react";
 
 export default function Home() {
   return (
@@ -11,14 +17,18 @@ export default function Home() {
         <nav className="flex justify-between items-center">
           <div className="flex items-center space-x-2">
             <Sparkles className="h-8 w-8 text-blue-600" />
-            <span className="text-2xl font-bold text-gray-900">PortfolioAI</span>
+            <span className="text-2xl font-bold text-gray-900">
+              PortfolioAI
+            </span>
           </div>
           <div className="space-x-4">
             <Link href="/auth/signin">
-              <Button variant="outline">Sign In</Button>
+              <Button className="bg-gray-100 hover:bg-gray-50 border-slate-200 shadow-md">
+                Sign In
+              </Button>
             </Link>
             <Link href="/auth/signin">
-              <Button>Get Started</Button>
+              <Button className="bg-gray-900 text-white hover:bg-gray-800">Get Started</Button>
             </Link>
           </div>
         </nav>
@@ -30,20 +40,22 @@ export default function Home() {
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6">
             Transform Your Resume Into a
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600">
-              {' '}Stunning Portfolio
+              {" "}
+              Stunning Portfolio
             </span>
           </h1>
           <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
-            Upload your resume and let AI create a beautiful, professional portfolio website. 
-            Edit without coding and download the complete source code.
+            Upload your resume and let AI create a beautiful, professional
+            portfolio website. Edit without coding and download the complete
+            source code.
           </p>
           <div className="space-x-4">
             <Link href="/auth/signin">
-              <Button size="lg" className="text-lg px-8 py-3">
+              <Button size="lg" className="text-lg px-8 py-3 bg-gray-900 text-white hover:bg-gray-800">
                 Create Your Portfolio
               </Button>
             </Link>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-3">
+            <Button size="lg" className="text-lg px-8 py-3 bg-gray-100 hover:bg-gray-50 border-slate-200 shadow-md">
               Sign in
             </Button>
           </div>
@@ -62,7 +74,7 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-          <Card className="text-center hover:shadow-lg transition-shadow">
+          <Card className="text-center hover:shadow-lg transition-shadow bg-white border-none">
             <CardHeader>
               <div className="mx-auto w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
                 <Upload className="h-8 w-8 text-blue-600" />
@@ -74,13 +86,13 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-600">
-                Our AI automatically extracts your information including experience, 
-                education, skills, and projects from your resume.
+                Our AI automatically extracts your information including
+                experience, education, skills, and projects from your resume.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="text-center hover:shadow-lg transition-shadow">
+          <Card className="text-center hover:shadow-lg transition-shadow bg-white border-none">
             <CardHeader>
               <div className="mx-auto w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mb-4">
                 <Edit className="h-8 w-8 text-green-600" />
@@ -92,13 +104,13 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-600">
-                Edit your information, add projects, update skills, and customize 
-                your portfolio without writing any code.
+                Edit your information, add projects, update skills, and
+                customize your portfolio without writing any code.
               </p>
             </CardContent>
           </Card>
 
-          <Card className="text-center hover:shadow-lg transition-shadow">
+          <Card className="text-center hover:shadow-lg transition-shadow bg-white border-none">
             <CardHeader>
               <div className="mx-auto w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-4">
                 <Download className="h-8 w-8 text-purple-600" />
@@ -110,7 +122,7 @@ export default function Home() {
             </CardHeader>
             <CardContent>
               <p className="text-gray-600">
-                Download HTML, CSS, and JavaScript files ready to deploy 
+                Download HTML, CSS, and JavaScript files ready to deploy
                 anywhere or customize further.
               </p>
             </CardContent>
@@ -144,7 +156,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-2">AI-Powered</h3>
               <p className="text-gray-600">
-                Advanced AI extracts and organizes your information intelligently.
+                Advanced AI extracts and organizes your information
+                intelligently.
               </p>
             </div>
 
@@ -154,7 +167,8 @@ export default function Home() {
               </div>
               <h3 className="text-xl font-semibold mb-2">Secure & Private</h3>
               <p className="text-gray-600">
-                Your data is secure and private. We don't store your resume files.
+                Your data is secure and private. We don't store your resume
+                files.
               </p>
             </div>
           </div>
@@ -168,10 +182,11 @@ export default function Home() {
             Ready to Create Your Portfolio?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Join thousands of professionals who have created stunning portfolios with PortfolioAI
+            Join thousands of professionals who have created stunning portfolios
+            with PortfolioAI
           </p>
           <Link href="/auth/signin">
-            <Button size="lg" className="text-lg px-8 py-3">
+            <Button size="lg" className="text-lg px-8 py-3 bg-gray-900 text-white hover:bg-gray-800">
               Get Started for Free
             </Button>
           </Link>
@@ -186,10 +201,11 @@ export default function Home() {
             <span className="text-xl font-bold">PortfolioAI</span>
           </div>
           <p className="text-gray-400">
-            Transform your resume into a beautiful portfolio with the power of AI
+            Transform your resume into a beautiful portfolio with the power of
+            AI
           </p>
         </div>
       </footer>
     </div>
-  )
+  );
 }
