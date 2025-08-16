@@ -1,4 +1,4 @@
-# AI Portfolio Generator
+# PortfolioAI
 
 A modern, full-stack web application that automatically generates professional portfolios from uploaded resumes using AI-powered parsing and profession-specific templates.
 
@@ -153,7 +153,11 @@ A modern, full-stack web application that automatically generates professional p
 
 5. **Preview & Download**
    - Preview your portfolio in a new window
-   - Download the complete HTML/CSS/JS files
+   - Download as a ZIP file containing:
+     - `portfolio-standalone.html` - Complete portfolio in a single file
+     - `index.html`, `styles.css`, `script.js` - Separate files for development
+     - `package.json` - Project configuration
+     - `README.md` - Setup instructions
    - Host anywhere you like
 
 ## Troubleshooting

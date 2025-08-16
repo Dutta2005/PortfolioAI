@@ -370,6 +370,7 @@ function generateHTML(data: ParsedResumeData, config: any): string {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>${data.personalInfo.name} - Portfolio</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css"> 
   <style id="portfolio-styles"></style>
 </head>
 <body>
@@ -504,7 +505,8 @@ function generateHTML(data: ParsedResumeData, config: any): string {
   </section>
 
   </div> <!-- End main-content -->
-
+  
+  <script src="script.js"></script>
   <script id="portfolio-script"></script>
 </body>
 </html>`;

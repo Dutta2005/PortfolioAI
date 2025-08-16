@@ -120,24 +120,34 @@ export default function Dashboard() {
       if (response.ok) {
         const { files } = await response.json();
 
-        // Create and download zip file (simplified - in production, use a proper zip library)
-        const blob = new Blob([JSON.stringify(files, null, 2)], {
-          type: "application/json",
+        // Dynamically import JSZip to avoid SSR issues
+        const JSZip = (await import('jszip')).default;
+        const zip = new JSZip();
+
+        // Add each file to the zip
+        files.forEach((file: any) => {
+          zip.file(file.name, file.content);
         });
-        const url = URL.createObjectURL(blob);
+
+        // Generate the zip file
+        const zipBlob = await zip.generateAsync({ type: 'blob' });
+        
+        // Download the zip file
+        const url = URL.createObjectURL(zipBlob);
         const a = document.createElement("a");
         a.href = url;
         a.download = `${currentPortfolio.title
           .replace(/\s+/g, "-")
-          .toLowerCase()}-code.json`;
+          .toLowerCase()}-portfolio.zip`;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
 
-        toast.success("Code files downloaded successfully!");
+        toast.success(`Downloaded portfolio with ${files.length} files!`);
       }
     } catch (error) {
+      console.error('Download error:', error);
       toast.error("Failed to download code files");
     }
   };
