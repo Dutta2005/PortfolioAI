@@ -2,9 +2,25 @@
 
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
-import PortfolioPreview from '@/components/PortfolioPreview'
+import dynamic from 'next/dynamic'
 import { ParsedResumeData } from '@/lib/resume-parser'
 import { Loader2 } from 'lucide-react'
+
+// Lazy-loaded heavy preview component
+const PortfolioPreview = dynamic(
+  () => import('@/components/PortfolioPreview'),
+  {
+    loading: () => (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-purple-50">
+        <div className="text-center">
+          <Loader2 className="h-8 w-8 animate-spin mx-auto mb-4 text-blue-600" />
+          <p className="text-gray-600">Preparing preview...</p>
+        </div>
+      </div>
+    ),
+    ssr: false,
+  }
+)
 
 export default function PreviewPage() {
   const params = useParams()

@@ -1,10 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import ResumeUploader from "@/components/ResumeUploader";
-import PortfolioEditor from "@/components/PortfolioEditor";
+import dynamic from "next/dynamic";
 import { Button } from "@/components/ui/button";
 import {
   Card,
@@ -19,6 +18,32 @@ import { Loader2, Plus, Eye, Edit, LogOut, User, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 import { ParsedResumeData } from "@/lib/resume-parser";
 import { AlertDialog } from "@/components/ui/alert-dialog";
+import GlobalLoading from "@/components/GlobalLoading";
+
+// Lazy-loaded heavy components
+const ResumeUploader = dynamic(
+  () => import("@/components/ResumeUploader"),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center py-12">
+        <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+      </div>
+    ),
+    ssr: false,
+  }
+);
+
+const PortfolioEditor = dynamic(
+  () => import("@/components/PortfolioEditor"),
+  {
+    loading: () => (
+      <div className="flex items-center justify-center py-12">
+        <Loader2 className="h-8 w-8 animate-spin text-gray-400" />
+      </div>
+    ),
+    ssr: false,
+  }
+);
 
 interface Portfolio {
   id: string;
@@ -206,9 +231,7 @@ export default function Dashboard() {
 
   if (status === "loading" || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <Loader2 className="h-8 w-8 animate-spin" />
-      </div>
+      <GlobalLoading />
     );
   }
 
