@@ -130,17 +130,31 @@ export default function PortfolioEditor({
       <div className="flex justify-between items-center">
         <h2 className="text-2xl font-bold">Edit Your Portfolio</h2>
         <div className="flex gap-2">
-          <Button className="bg-white shadow-md hover:bg-gray-50" onClick={onPreviewAction}>
-            <Eye className="mr-2 h-4 w-4" />
-            Preview
+          <Button
+            className="bg-white shadow-md hover:bg-gray-50 px-3 sm:px-4"
+            onClick={onPreviewAction}
+          >
+            <Eye className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Preview</span>
           </Button>
-          <Button className="bg-white shadow-md hover:bg-gray-50" onClick={onDownloadAction}>
-            <Download className="mr-2 h-4 w-4" />
-            Download Code
+
+          <Button
+            className="bg-white shadow-md hover:bg-gray-50 px-3 sm:px-4"
+            onClick={onDownloadAction}
+          >
+            <Download className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">Download Code</span>
           </Button>
-          <Button onClick={handleSave} disabled={isSaving} className="bg-gray-900 shadow-md hover:bg-gray-800 text-white">
-            <Save className="mr-2 h-4 w-4" />
-            {isSaving ? "Saving..." : "Save"}
+
+          <Button
+            onClick={handleSave}
+            disabled={isSaving}
+            className="bg-gray-900 shadow-md hover:bg-gray-800 text-white px-3 sm:px-4 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <Save className="h-4 w-4 sm:mr-2" />
+            <span className="hidden sm:inline">
+              {isSaving ? "Saving..." : "Save"}
+            </span>
           </Button>
         </div>
       </div>
